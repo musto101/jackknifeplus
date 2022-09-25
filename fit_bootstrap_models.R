@@ -1,4 +1,5 @@
-fit_bootstrap_models <- function(training, test, model_jackknife, n, m, B, grid){
+fit_bootstrap_models <- function(training, test, model_jackknife, n, m, B,
+                                 grid, model){
 
   samples_idx <- generate_bootstrap_samples(n, m, B)
   n1 <- nrow(test)
@@ -6,7 +7,7 @@ fit_bootstrap_models <- function(training, test, model_jackknife, n, m, B, grid)
 
   for (b in 1:B) {
 
-    predictions[b] <- model_jackknife(training, test, grid)
+    predictions[b] <- model_jackknife(training, test, grid, model)
 
   }
 
